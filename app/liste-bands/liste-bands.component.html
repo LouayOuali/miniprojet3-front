@@ -1,0 +1,30 @@
+<div class="col-sm-4 col-md-4 col-lg-4 mb-4"> 
+    <app-update-band [band]="updatedBand"
+    (bandUpdated)="bandUpdated($event)"
+        [ajout]="ajout">
+        
+        
+    </app-update-band> 
+</div>
+
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom Bands</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let band of bands">
+                    <tr>
+                        <td>{{band.idBand}}</td>
+                        <td>{{band.nomBand}}</td>
+                        <td><a class="btn btn-success" (click)="updateBand(band)">Editer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

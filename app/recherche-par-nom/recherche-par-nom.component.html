@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="card shadow mb-4">
+
+
+        <!-- <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2 mt-2 "> <label>Nom Musicien en tapant</label> <input #nom
+                    [(ngModel)]="searchTerm" name="searchTerm" class="form-control"> </div>
+        </form> -->
+
+        <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2 mt-2 "> <label>Nom Musicien en tapant</label> <input
+                    class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)"> </div>
+        </form>
+
+
+        <!-- <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2 mt-2 "> <label>Nom Musicien</label> <input type="text"
+                    class="form-control" [(ngModel)]="nomMusicien" name="nomMusicien" class="form-control"> <button
+                    type="submit" (click)="rechercheParNom()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+            </div>
+        </form> -->
+
+        <div class="card-body">
+
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom Musiciens</th>
+                    <th>Annes d'experience</th>
+                    <th>Instrument</th>
+                    <th>Salaire</th>
+                    <th>Band</th>
+                </tr>
+                <tbody *ngFor="let musicien of musiciens">
+                    <tr>
+                        <td>{{musicien.idMusicien}}</td>
+                        <td>{{musicien.nomMusicien}}</td>
+                        <td>{{musicien.experienceYear}}</td>
+                        <td>{{musicien.instrument}}</td>
+                        <td>{{musicien.salaire}}</td>
+                        <td>{{musicien.band.nomBand}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

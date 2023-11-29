@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-4"> <label>Bands </label> <select
+                    class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="IdBand"
+                    (change)="onChange()">
+                    <option *ngFor="let band of bands" value="{{band.idBand}}"> {{band.nomBand}} </option>
+                </select> </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom Musiciens</th>
+                    <th>Annes d'experience</th>
+                    <th>Instrument</th>
+                    <th>Salaire</th>
+                    <th>Band</th>
+                </tr>
+                <tbody *ngFor="let musicien of musiciens">
+                    <tr>
+                        <td>{{musicien.idMusicien}}</td>
+                        <td>{{musicien.nomMusicien}}</td>
+                        <td>{{musicien.experienceYear}}</td>
+                        <td>{{musicien.instrument}}</td>
+                        <td>{{musicien.salaire}}</td>
+                        <td>{{musicien.band.nomBand}}</td>
+                        
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

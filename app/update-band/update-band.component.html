@@ -1,0 +1,8 @@
+<form>
+    <div [hidden]> <label>ID Band</label> <input type="number" [(ngModel)]="band.idBand" name="idBand"
+            class="form-control w-25"> </div>
+    <div> <label>Nom Band</label> <input type="text" [(ngModel)]="band.nomBand" name="nomBand"
+            class="form-control" placeholder="Entrez un nom de Band..."> </div>
+    <div class="mt-2"> <button type="submit" [disabled]="!band.nomBand" class="btn btn-success"
+            (click)="saveBand()">{{ ajout ? 'Ajouter' : 'Modifier'}}</button> </div>
+</form>

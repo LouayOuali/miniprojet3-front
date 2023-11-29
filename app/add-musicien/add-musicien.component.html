@@ -1,0 +1,35 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Musicien :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label>ID Musicien</label> <input type="number"
+                [(ngModel)]="newMusicien.idMusicien" name="idMusicien" class="form-control"> </div>
+        <div class="col-sm-4 col-md-4 col-lg-4"> <label>Nom Musicien</label> <input type="text"
+                [(ngModel)]="newMusicien.nomMusicien" name="nomMusicien" class="form-control"> </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label>Annes d'experience</label> <input type="number"
+                [(ngModel)]="newMusicien.experienceYear" name="experienceYear" class="form-control"> </div>
+        <div class="col-sm-4 col-md-4 col-lg-4"> <label>Instrument</label> <input type="text"
+                [(ngModel)]="newMusicien.instrument" name="instrument" class="form-control"> </div>
+        <div class="col-sm-4 col-md-4 col-lg-4"> <label>Salaire</label> <input type="number"
+                [(ngModel)]="newMusicien.salaire" name="salaire" class="form-control"> </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label>Band</label> 
+            <select class="form-control form-control-lg" id="idBand" name="idBand" [(ngModel)]="newIdBand">
+                <option *ngFor="let band of bands" [value]="band.idBand">
+                    {{band.nomBand}}
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)"
+            name="logo" class="form-control">
+        </div>
+
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="imagePath" class="card-img-top img-fluid rounded-start"
+            style="width: 500px; height: 300px" />
+        </div>
+        <div class="mt-2"> <button type="submit" (click)="addMusicien()" class="btn btn-success">Ajouter</button> </div>
+    </form>
+</div>

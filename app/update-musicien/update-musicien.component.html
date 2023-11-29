@@ -1,0 +1,69 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Musicien :</h2>
+    </div>
+    <form>
+        
+            <div class="col-sm-2 col-md-2 col-lg-2"> 
+                <label>ID Musicien</label> 
+                <input readonly type="number"
+                [(ngModel)]="currentMusicien.idMusicien" name="idMusicien" class="form-control"> 
+            </div>
+        
+        <div class="col-sm-4 col-md-4 col-lg-4"> <label>Nom Musicien</label> <input type="text"
+                [(ngModel)]="currentMusicien.nomMusicien" name="nomMusicien" class="form-control"> </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label>Annes d'experience</label> <input type="number"
+                [(ngModel)]="currentMusicien.experienceYear" name="experienceYear" class="form-control"> </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label>Instrument</label> <input type="text"
+                [(ngModel)]="currentMusicien.instrument" name="instrument" class="form-control"> </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label>Salaire</label> <input type="number"
+                [(ngModel)]="currentMusicien.salaire" name="salaire" class="form-control"> </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2"> <label> Band</label>
+            <select class="form-control form-control-lg" id="idBand" name="idBand" [(ngModel)]="updatedBandId">
+                <option *ngFor="let band of bands" [value]="band.idBand">
+                    {{band.nomBand}}
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)" class="form-control">
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" (click)="onAddImageMusicien()" class="btn 
+            btn-success">Ajouter Image</button>
+        </div>
+            
+       
+
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="myImage" class="card-img-top img-fluid rounded-start"
+            style="width: 500px; height: 300px" />
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Images</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let img of currentMusicien.images">
+                            <tr>
+                                <td><img class="card-img-top img-responsive" src="{{'data:' + img.type + ';base64,' + img.image}}"
+                                        style="height :50px;width:100px"></td>
+                                <td style="width:20%" ><a class="btn btn-danger"
+                                 (click)="supprimerImage(img)">Supprimer</a></td>
+                                                    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <div class="mt-2"> <button type="submit" (click)="updateMusicien()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>
