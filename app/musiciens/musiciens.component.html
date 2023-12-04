@@ -21,7 +21,7 @@
                         <td>{{musicien.band.nomBand}}</td>
                         <td><img class="card-img-top img-responsive"
                             
-                            src="{{apiurl+'/image/loadfromFS/'+musicien.idMusicien}}"
+                            src="{{musicien.imageStr}}"
                             style = "height :50px;width:100px"></td>
                         <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerMusicien(musicien)">Supprimer</a></td>
                         <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateMusicien',musicien.idMusicien]">Modifier</a></td>

@@ -3,4 +3,5 @@ export class Image {
     name! : string ;
     type !: string ;
     image !: number[] ;
+    idMus !: number;
     }

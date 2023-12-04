@@ -3,6 +3,7 @@ import { Musicien } from '../model/musicien.model';
 import { MusicienService } from '../musicien.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { Image } from '../model/image.model';
 
 
 @Component({
@@ -18,15 +19,31 @@ export class MusiciensComponent {
   }
   
   ngOnInit(): void {
-    this.chargerProduit();
+    this.chargerMusicien();
   }
 
-  chargerProduit(): void {
+  chargerMusicien(){
     this.musicienService.listeMusiciens().subscribe(mus => {
-      console.log(mus);
-      this.musiciens = mus
-    })
-  }
+    this.musiciens = mus;
+    this.musiciens.forEach((m) => {
+    m.imageStr = 'data:' + m.images[0].type + ';base64,' + 
+    m.images[0].image;
+    }); 
+    });
+    }
+
+  // chargerMusicien(){ 
+  //   this.musicienService.listeMusiciens().subscribe(muss => 
+  //     { this.musiciens = muss; this.musiciens.forEach((m) => { 
+  //       this.musicienService 
+  //         .loadImage(m.image.idImage) 
+  //         .subscribe((img: Image) => { 
+  //           m.imageStr = 'data:' + img.type + ';base64,' + img.image; 
+  //         }); 
+  //       }); 
+  //     }); 
+  //   }
+  
 
 
 
@@ -37,7 +54,7 @@ export class MusiciensComponent {
     if (conf)
       this.musicienService.supprimerMusicien(m.idMusicien!).subscribe(() => {
         console.log("produit supprimé");
-        this.chargerProduit();
+        this.chargerMusicien();
      });
   }
 
